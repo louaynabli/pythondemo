@@ -58,14 +58,7 @@ pipeline {
         always {
             echo 'Publishing test results...'
             junit 'test-results/results.xml'
-            publishHTML(target: [
-                allowMissing: true,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'html-report',
-                reportFiles: 'coverage.html',
-                reportName: 'Coverage Report'
-            ])
+            archiveArtifacts artifacts: 'html-report/**', allowEmptyArchive: true
         }
         success {
             echo '✅ Build succeeded!'
