@@ -14,7 +14,7 @@ pipeline {
                 echo 'Setting up Python environment...'
                 sh '''
                     python3 -m venv venv
-                    source venv/bin/activate
+                    . venv/bin/activate
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo 'Running code quality checks...'
                 sh '''
-                    source venv/bin/activate
+                    . venv/bin/activate
                     pip install flake8
                     flake8 calculator.py --max-line-length=120 --ignore=E501,W503 || true
                 '''
@@ -36,7 +36,7 @@ pipeline {
             steps {
                 echo 'Running unit tests...'
                 sh '''
-                    source venv/bin/activate
+                    . venv/bin/activate
                     mkdir -p test-results html-report
                     pytest tests/ -v --tb=short --junitxml=test-results/results.xml
                 '''
@@ -47,7 +47,7 @@ pipeline {
             steps {
                 echo 'Generating coverage report...'
                 sh '''
-                    source venv/bin/activate
+                    . venv/bin/activate
                     pytest tests/ --cov=calculator --cov-report=html:html-report --cov-report=term
                 '''
             }
