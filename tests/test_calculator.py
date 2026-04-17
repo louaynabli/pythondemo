@@ -122,3 +122,31 @@ class TestNumberHelpers:
 
     def test_is_odd_zero(self):
         assert is_odd(0) is False
+
+
+class TestFailingDemo:
+    """INTENTIONALLY FAILING TESTS - These simulate bugs in the application."""
+
+    def test_add_returns_wrong_result(self):
+        """BUG: add() returns wrong sum - expects 6 but should be 5."""
+        assert add(2, 3) == 6
+
+    def test_subtract_returns_wrong_result(self):
+        """BUG: subtract() returns wrong difference - expects 7 but should be 6."""
+        assert subtract(10, 4) == 7
+
+    def test_multiply_returns_wrong_result(self):
+        """BUG: multiply() returns wrong product - expects 15 but should be 12."""
+        assert multiply(3, 4) == 15
+
+    def test_divide_returns_wrong_result(self):
+        """BUG: divide() returns wrong quotient - expects 3 but should be 2."""
+        assert divide(10, 5) == 3
+
+    def test_power_returns_wrong_result(self):
+        """BUG: power() returns wrong value - expects 9 but should be 8."""
+        assert power(2, 3) == 9
+
+    def test_modulo_returns_wrong_result(self):
+        """BUG: modulo() returns wrong remainder - expects 0 but should be 2."""
+        assert modulo(7, 5) == 0
